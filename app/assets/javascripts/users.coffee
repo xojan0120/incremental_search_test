@@ -31,9 +31,7 @@ incremental_search = (query_url, query_word, ul_element) ->
 # --------------------------------------
 # メイン
 # --------------------------------------
-$(document).on "keyup", "#form", (event) ->
-  incremental_search("/users/search", $(this).val(), $("#result"))
-  return
+$(document).on "keyup", "#form", (event) -> incremental_search("/users/search", $(this).val(), $("#result"))
 
 # 以下オリジナル
 #$(document).on 'turbolinks:load', ->
