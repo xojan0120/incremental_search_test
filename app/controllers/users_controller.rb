@@ -2,9 +2,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def search
-    if params[:query].present?
-      @users = User.where('name LIKE (?)', "%#{params[:query]}%")
-      render json: @users
+    if params[:query_word].present?
+      users = User.where('name LIKE (?)', "%#{params[:query_word]}%").limit(10)
+      render json: users
     end
   end
 

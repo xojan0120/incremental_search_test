@@ -1,6 +1,7 @@
 h1 Listing users
 
-input#form type="form" 
+= text_field_tag "query_word", nil, id: "form", data: { search_path: search_users_path }
+/input#form type="form" 
 ul#result
 
 table

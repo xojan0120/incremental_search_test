@@ -3,14 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 # --------------------------------------
-# 関数
+# インクリメンタル検索用関数
 # --------------------------------------
 # 検索クエリをXMLHttpRequestオブジェクトにする
 create_request = (query_url, query_word) ->
   $.ajax(
     url:          query_url
     type:        "GET"
-    data:        "query=#{query_word}"
+    data:        "query_word=#{query_word}"
     processData:  false
     contentType:  false
     dataType:    "json"
@@ -31,7 +31,8 @@ incremental_search = (query_url, query_word, ul_element) ->
 # --------------------------------------
 # メイン
 # --------------------------------------
-$(document).on "keyup", "#form", (event) -> incremental_search("/users/search", $(this).val(), $("#result"))
+$(document).on "keyup", "#form", (event) ->
+  incremental_search($(this).data('search-path'), $.trim($(this).val()), $("#result"))
 
 # 以下オリジナル
 #$(document).on 'turbolinks:load', ->
